@@ -11,8 +11,13 @@
 
     <% unless @task.new_record? %>
       <div class =”form-group”>
-        <%= f.label :completed %>
-        <%= f.check_box :completed, {}, true, false %>
+        <% if @task.completed %>
+          <%= f.label :unmark_as_complete %>
+          <%= f.check_box :completed, {}, false, false %>
+        <% else %>
+          <%= f.label :mark_as_complete %>
+          <%= f.check_box :completed, {}, true, false %>
+        <% end %>
       </div>
     <% end %>
 
